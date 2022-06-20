@@ -17,4 +17,8 @@ public class AdminImplementation implements AdminInterface{
     public void addProfessor(){
 
     }
+	public static void addGrade(String id, String courseId, String studentId, int grade) {
+		// TODO Auto-generated method stub
+		
+	}
 }

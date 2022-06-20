@@ -2,6 +2,8 @@ package com.flipkart.bean;
 
 public class Admin extends User {
 
+    private String department;
+    private String designation;
     public String getDepartment() {
         return department;
     }
@@ -18,6 +20,4 @@ public class Admin extends User {
         this.designation = designation;
     }
 
-    private String department;
-    private String designation;
 }

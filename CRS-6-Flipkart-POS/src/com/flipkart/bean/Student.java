@@ -2,6 +2,8 @@ package com.flipkart.bean;
 
 public class Student extends User{
 
+    private String studentDepartment;
+    private int semesterNumber;
     public String getStudentDepartment() {
         return studentDepartment;
     }
@@ -18,6 +20,4 @@ public class Student extends User{
         this.semesterNumber = semesterNumber;
     }
 
-    private String studentDepartment;
-    private int semesterNumber;
 }

@@ -4,6 +4,7 @@ public class User {
 
     protected String userID;
     protected String userName;
+    private String password;
 
     public String getUserID() {
         return userID;
@@ -28,7 +29,6 @@ public class User {
         this.password = password;
     }
 
-    private String password;
 
 
 

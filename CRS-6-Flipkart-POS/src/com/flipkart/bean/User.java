@@ -5,8 +5,6 @@ public class User {
     protected String userID;
     protected String userName;
 
-    private String extra;
-
     public String getUserID() {
         return userID;
     }

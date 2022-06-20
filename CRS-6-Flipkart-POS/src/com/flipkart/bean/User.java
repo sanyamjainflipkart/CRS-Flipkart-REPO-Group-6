@@ -2,17 +2,16 @@ package com.flipkart.bean;
 
 public class User {
 
-    protected int userID;
+    protected String userID;
     protected String userName;
 
-    public int getUserID() {
+    public String getUserID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
-
     public String getUserName() {
         return userName;
     }

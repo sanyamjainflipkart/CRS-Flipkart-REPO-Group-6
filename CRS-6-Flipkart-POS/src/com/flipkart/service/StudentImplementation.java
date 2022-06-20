@@ -1,15 +1,20 @@
 package com.flipkart.service;
-import com.flipkart.bean.Student;
 
 public class StudentImplementation implements StudentInterface{
 
-    public void registerForSemester(){
+    public String registerForSemester(String id){
 
+        return id;
     }
     public void viewGrade(){
 
     }
-    public void viewRegisteredCourses(){
+    public void viewRegisteredCourses(String id){
+
+    }
+
+    public void viewReportcard(String id)
+    {
 
     }
 }

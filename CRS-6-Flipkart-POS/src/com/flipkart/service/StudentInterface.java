@@ -2,8 +2,9 @@ package com.flipkart.service;
 
 public interface StudentInterface {
 
-    public void registerForSemester();
+    public String registerForSemester(String id);
     public void viewGrade();
-    public void viewRegisteredCourses();
+    public void viewRegisteredCourses(String id);
+    public void viewReportcard(String id);
 
 }

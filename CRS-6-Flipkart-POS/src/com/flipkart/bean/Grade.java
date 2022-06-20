@@ -1,7 +1,6 @@
 package com.flipkart.bean;
 
 public class Grade {
-
     private int grade;
 
     public int getGrade() {
@@ -11,5 +10,4 @@ public class Grade {
     public void setGrade(int grade) {
         this.grade = grade;
     }
-
 }

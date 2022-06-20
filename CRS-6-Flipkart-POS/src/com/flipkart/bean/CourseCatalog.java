@@ -1,26 +1,29 @@
 package com.flipkart.bean;
-
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CourseCatalog {
+    List<Course> courses;
 
-    private String name;
-    private Date createdAt;
-
-    public String getName() {
-        return name;
+    /**Default Constructor
+     */
+    public CourseCatalog() {
+        courses = new ArrayList<>();
     }
 
-    public void setName(String name) {
-        this.name = name;
+
+    /** Method to get <List>Courses
+     * @return List<Course>
+     */
+    public List<Course> getCourses() {
+        return courses;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    /** Method to set <List>Courses
+     * @param courses
+     */
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
-
 }

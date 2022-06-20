@@ -1,9 +1,16 @@
 package com.flipkart.bean;
 
 public class Professor extends User{
-
     private String professorDepartment;
     private String professorDesignation;
+
+    /**
+     * Default constructor
+     */
+    public Professor() {
+        super();
+    }
+
     public String getProfessorDepartment() {
         return professorDepartment;
     }
@@ -11,7 +18,6 @@ public class Professor extends User{
     public void setProfessorDepartment(String professorDepartment) {
         this.professorDepartment = professorDepartment;
     }
-
     public String getProfessorDesignation() {
         return professorDesignation;
     }
@@ -21,3 +27,4 @@ public class Professor extends User{
     }
 
 }
+

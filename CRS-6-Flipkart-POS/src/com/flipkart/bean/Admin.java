@@ -1,6 +1,6 @@
 package com.flipkart.bean;
 
-public class Admin {
+public class Admin extends User {
 
     public String getDepartment() {
         return department;

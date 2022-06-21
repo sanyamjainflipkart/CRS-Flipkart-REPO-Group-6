@@ -21,7 +21,6 @@ public class ProfessorApplication {
 	 * @param args
 	 */
 	public void professorLoggedIn(String Id) {
-		// TODO Auto-generated method stub
 		Logger logger = Logger.getLogger(ProfessorApplication.class);
 		ProfessorImplementation professorImplementation=new ProfessorImplementation();
 		while(true) {
@@ -48,12 +47,7 @@ public class ProfessorApplication {
 				//Status of allotment to be added whether alloted or not.
 				break;
 			case 2:
-				try {
 				professorImplementation.viewRegisteredCourses(Id);
-				} 
-				catch(NoCourseFoundException ex) {
-					logger.info("Exception: "+ ex.getMessagewithid());
-				}
 				break;
 			case 3:
 				System.out.println("Enter  course Id");
@@ -70,14 +64,8 @@ public class ProfessorApplication {
 				//Show successful grade allotment
 				break;
 			 case 4:
-				 try {
 				 professorImplementation.viewCourse();
-				 }
-				 catch(NoCourseFoundException ex) {
-					 logger.error("Exception: "+ex.getMessage());
-				 }
-				 //shows available courses that can be picked
-				break;
+				 break;
 			 case 5:
 				 System.out.println("Enter  course Id");
 				 courseId=sc.next();

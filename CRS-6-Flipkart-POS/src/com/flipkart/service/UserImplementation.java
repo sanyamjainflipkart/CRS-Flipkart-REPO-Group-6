@@ -6,6 +6,9 @@ public class UserImplementation implements UserInterface {
     public void loginUser(){
 
     }
+    public void logoutUser(){
+
+    }
     public void updateDetails(){
 
     }

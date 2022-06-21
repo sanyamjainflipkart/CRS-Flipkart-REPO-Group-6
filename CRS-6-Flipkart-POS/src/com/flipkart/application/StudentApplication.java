@@ -18,6 +18,10 @@ public class StudentApplication {
     NotificationInterface notificationService = new NotificationImplementation();
     AdminInterface adminInterface = new AdminImplementation();
 
+    public static void main(String args[]){
+        StudentApplication s = new StudentApplication();
+        s.studentLoggedin("1");
+    }
     public void studentLoggedin(String id) {
         StudentInterface studentService = new StudentImplementation();
 

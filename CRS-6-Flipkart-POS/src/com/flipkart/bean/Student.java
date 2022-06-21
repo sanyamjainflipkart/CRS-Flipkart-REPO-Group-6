@@ -69,4 +69,14 @@ public class Student extends User {
     public void setApproved(boolean isApproved) {
         this.isApproved = isApproved;
     }
+
+    public String getBranch() {
+        String s;
+        s = "";
+        return s;
+    }
+
+    public boolean isReportApproved() {
+        return true;
+    }
 }

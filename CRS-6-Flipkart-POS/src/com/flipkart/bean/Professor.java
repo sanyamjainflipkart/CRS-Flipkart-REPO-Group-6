@@ -26,5 +26,8 @@ public class Professor extends User{
         this.professorDesignation = professorDesignation;
     }
 
+    public void setDepartment(String department) {
+        this.professorDepartment = department;
+    }
 }
 

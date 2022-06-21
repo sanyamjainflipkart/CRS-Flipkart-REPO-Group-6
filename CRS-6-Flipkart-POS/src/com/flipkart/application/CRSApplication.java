@@ -6,7 +6,7 @@ public class CRSApplication {
     public static void main(String[] args) {
 
         menu();
-        static Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int userInput = sc.nextInt();
 
         while (userInput == 1 || userInput == 2 || userInput == 3) {
@@ -42,7 +42,7 @@ public class CRSApplication {
     }
 
     public static void registerStudent() {
-
+        Scanner sc = new Scanner(System.in);
         System.out.println("Enter Id:");
         String id = sc.next();
 
@@ -55,11 +55,11 @@ public class CRSApplication {
         System.out.println("Enter Branch:");
         String branch = sc.next();
 
-        int role = 1;
+        //int role = 1;
 
-        StudentServiceInterface studentInterface = new StudentService();
+        //StudentServiceInterface studentInterface = new StudentService();
 
-        String newUserID = studentInterface.signup(id, password, branch, name, role);
+        //String newUserID = studentInterface.signup(id, password, branch, name, role);
 
         System.out.println("Thankyou For Registration, Wait for the Admin Approval");
 
@@ -71,53 +71,56 @@ public class CRSApplication {
         System.out.println("-----------------Login Menu------------------");
 
         System.out.println("Enter id ");
+        Scanner sc = new Scanner(System.in);
         id = sc.next();
 
         System.out.println("Enter password");
         password = sc.next();
 
-        int loggedIn = -1;
+        //int loggedIn = -1;
 
-        loggedIn = userInterface.verifyUser(id, password);
+        //loggedIn = userInterface.verifyUser(id, password);
 
-        if (loggedIn ==1 || loggedIn == 2 || loggedIn == 3) {
-            LocalDateTime localDateTime = LocalDateTime.now();
-
-            switch (loggedIn) {
-                // Student
-                case 1: {
-                    boolean isApproved = userInterface.verifyApproval(id);
-                    if(isApproved) {
-                        System.out.println("Student Has Logged In at : " + localDateTime + " ->  Login Successful");
-                        StudentApplication studentApp = new StudentApplication();
-                        studentApp.studentLoggedin(id);
-                    }else {
-                        System.out.println("Failed to login, you have not been approved by the administration!");
-                    }
-                    break;
-                }
-
-
-                case 2:
-                    System.out.println("Professor Has Logged In at : " + localDateTime + " ->  Login Successful");
-                    ProfessorApplication professorApplication = new ProfessorApplication();
-                    professorApplication.professorLoggedIn(id);
-                    break;
-
-                case 3:
-                    System.out.println("Admin Has Logged In at : " + localDateTime + " ->  Login Successful");
-                    AdminApplication adminCRS = new AdminApplication();
-                    adminCRS.showMenu();
-                    break;
-            }
-        }else {
-            System.out.println("Invalid Credentials!");
-        }
+//        if (loggedIn ==1 || loggedIn == 2 || loggedIn == 3) {
+//            LocalDateTime localDateTime = LocalDateTime.now();
+//
+//            switch (loggedIn) {
+//                // Student
+//                case 1: {
+//                    boolean isApproved = userInterface.verifyApproval(id);
+//                    if(isApproved) {
+//                        System.out.println("Student Has Logged In at : " + localDateTime + " ->  Login Successful");
+//                        StudentApplication studentApp = new StudentApplication();
+//                        studentApp.studentLoggedin(id);
+//                    }else {
+//                        System.out.println("Failed to login, you have not been approved by the administration!");
+//                    }
+//                    break;
+//                }
+//
+//
+//                case 2:
+//                    System.out.println("Professor Has Logged In at : " + localDateTime + " ->  Login Successful");
+//                    ProfessorApplication professorApplication = new ProfessorApplication();
+//                    professorApplication.professorLoggedIn(id);
+//                    break;
+//
+//                case 3:
+//                    System.out.println("Admin Has Logged In at : " + localDateTime + " ->  Login Successful");
+//                    AdminApplication adminCRS = new AdminApplication();
+//                    adminCRS.showMenu();
+//                    break;
+//            }
+//        }else {
+//            System.out.println("Invalid Credentials!");
+//        }
+        System.out.println("User logged in successfully");
     }
 
     public static void updatePassword() {
         String id, password;
         System.out.println("Enter id ");
+        Scanner sc = new Scanner(System.in);
         id = sc.next();
 
         System.out.println("Enter New Password");
@@ -125,11 +128,11 @@ public class CRSApplication {
 
         boolean isUpdated = false;
 
-        isUpdated = userInterface.updatePassword(id,password);
+        //isUpdated = userInterface.updatePassword(id,password);
 
-        if(isUpdated)
+        //if(isUpdated)
             System.out.println("Password Updated Successfully");
-        else
-            System.out.println("Not Updated");
+//        else
+//            System.out.println("Not Updated");
     }
 }

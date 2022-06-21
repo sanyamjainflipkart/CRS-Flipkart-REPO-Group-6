@@ -16,10 +16,10 @@ import com.flipkart.exception.NoCourseFoundException;
  *
  */
 public class ProfessorApplication {
-
-	/**
-	 * @param args
-	 */
+	public static void main(String args[]){
+		ProfessorApplication p = new ProfessorApplication();
+		p.professorLoggedIn("1");
+	}
 	public void professorLoggedIn(String Id) {
 		Logger logger = Logger.getLogger(ProfessorApplication.class);
 		ProfessorImplementation professorImplementation=new ProfessorImplementation();

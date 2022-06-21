@@ -11,4 +11,16 @@ public class ProfessorImplementation implements ProfessorInterface{
     public void registerCourse(){
 
     }
+	public void viewRegisteredCourses(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void viewRegisteredStudents(String id, String courseId) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void addCourse(String id, String courseid, String coursename) {
+		// TODO Auto-generated method stub
+		
+	}
 }

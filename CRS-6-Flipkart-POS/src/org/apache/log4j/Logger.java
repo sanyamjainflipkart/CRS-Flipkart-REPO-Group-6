@@ -4,6 +4,7 @@
 package org.apache.log4j;
 
 import com.flipkart.application.ProfessorApplication;
+import com.flipkart.dao.ProfessorDaoOperation;
 
 /**
  * @author saurabh.singh5
@@ -24,9 +25,14 @@ public class Logger {
 		return null;
 	}
 
-	public void info(String string) {
+    public static Logger getLogger(Class<ProfessorDaoOperation> professorDaoOperationClass) {
+    }
+
+    public void info(String string) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	public void error(String s) {
+	}
 }

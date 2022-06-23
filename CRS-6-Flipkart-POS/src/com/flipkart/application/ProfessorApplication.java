@@ -5,30 +5,27 @@ package com.flipkart.application;
 
 import java.util.Scanner;
 
+import com.flipkart.service.AdminInterface;
 import org.apache.log4j.Logger;
 
 import com.flipkart.service.AdminImplementation;
 import com.flipkart.service.ProfessorImplementation;
 import com.flipkart.exception.NoCourseFoundException;
 
-/**
- * @author saurabh.singh5
- *
- */
+
 public class ProfessorApplication {
 	public static void main(String args[]){
 		ProfessorApplication p = new ProfessorApplication();
 		p.professorLoggedIn("1");
 	}
 	public void professorLoggedIn(String Id) {
-		Logger logger = Logger.getLogger(ProfessorApplication.class);
-		ProfessorImplementation professorImplementation=new ProfessorImplementation();
+//		Logger logger = Logger.getLogger(ProfessorApplication.class);
+//		ProfessorImplementation professorImplementation=new ProfessorImplementation();
 		while(true) {
 			System.out.println("1. Select Courses");//Selecting courses for Professor
 			System.out.println("2. View Registered Courses");
 			System.out.println("3. Add Grades");
-			System.out.println("4. Show Courses");
-			System.out.println("5. View Registered Students");
+			System.out.println("4. View Registered Students");
 			
 			System.out.println("Enter your option");
 			Scanner sc = new Scanner(System.in);
@@ -37,17 +34,11 @@ public class ProfessorApplication {
 			
 			switch (option) {
 			case 1:
-				System.out.println("Enter course id");
-				String courseid=sc.next();
-				
-				System.out.println("Enter course name");
-				String coursename=sc.next();
-				
-				professorImplementation.addCourse(Id ,courseid,coursename);
+				addCourse();
 				//Status of allotment to be added whether alloted or not.
 				break;
 			case 2:
-				professorImplementation.viewRegisteredCourses(Id);
+				displayCourses();
 				break;
 			case 3:
 				System.out.println("Enter  course Id");
@@ -64,12 +55,12 @@ public class ProfessorApplication {
 				//Show successful grade allotment
 				break;
 			 case 4:
-				 professorImplementation.viewCourse();
+				 ProfessorImplementation.viewCourse();
 				 break;
 			 case 5:
 				 System.out.println("Enter  course Id");
 				 courseId=sc.next();
-				 professorImplementation.viewRegisteredStudents(Id,courseId);
+				 ProfessorImplementation.viewRegisteredStudents(Id,courseId);
 				 //shows available courses that can be picked
 				break;
 			default:
@@ -82,5 +73,21 @@ public class ProfessorApplication {
 			
 		}
 	}
+
+	private void addCourse(){
+		System.out.println("Enter Course Code");
+		String courseId = sc.next();
+
+		//Course course = new Course(10, courseName, courseId);
+		System.out.println("Enter Course name: ");
+		String course_name = sc.next();
+		AdminInterface.addCourse(course_name);
+		System.out.println("Course added successfully");
+	}
+
+	private void displayCourses(){
+		AdminInterface.displayCourses();
+	}
+
 
 }

@@ -6,6 +6,7 @@ import com.flipkart.bean.Student;
 
 public interface AdminInterface {
     ArrayList<String> courses = new ArrayList<String>(100);
+    ArrayList<String> professors = new ArrayList<String>(100);
     static void addCourse(String course) {
         courses.add(course);
     }
@@ -15,14 +16,15 @@ public interface AdminInterface {
     }
 
     static void displayCourses(){
+        System.out.println("Following are the list of available courses: ");
         for (int i = 0; i < courses.size();i++)
         {
             System.out.println(courses.get(i));
         }
     }
 
-    static void addProfessor(Professor professor) {
-    
+    static void addProfessor(String professor) {
+        professors.add(professor);
     }
 
     static void approveStudent(String studentUserId) {

@@ -25,7 +25,7 @@ public class AdminApplication {
         System.out.println("\nEnter Your Choice");
         int userInput = sc.nextInt();
 
-        while (userInput <= 7) {
+        while (userInput <= 6) {
 
             switch (userInput) {
                 case 1:
@@ -38,7 +38,8 @@ public class AdminApplication {
                     addProfessor();
                     break;
                 case 4:
-                    viewCourses();
+                    // Display all updated courses
+                    displayCourses();
                     break;
                 case 5:
                     // Allot Course
@@ -47,10 +48,6 @@ public class AdminApplication {
                 case 6:
                     // View Student Data
                     activateGradeCard();
-                    break;
-
-                case 7:
-                    displayCourses();
                     break;
 
                 default:
@@ -70,7 +67,7 @@ public class AdminApplication {
         System.out.println("4  View All Courses");
         System.out.println("5  Student Course Allocation");
         System.out.println("6  Activate Grade Card");
-        System.out.println("7  Display all courses");
+        //System.out.println("7  Display all courses");
     }
 
     private void displayCourses(){
@@ -116,7 +113,7 @@ public class AdminApplication {
         professor.setDepartment(department);
         professor.setId(id);
 
-        AdminInterface.addProfessor(professor);
+        AdminInterface.addProfessor(name);
 
         System.out.println("Professor added successfully");
     }

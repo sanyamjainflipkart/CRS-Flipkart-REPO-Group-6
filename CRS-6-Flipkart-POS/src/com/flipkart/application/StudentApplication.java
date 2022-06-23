@@ -53,7 +53,6 @@ public class StudentApplication {
     }
 
     private void CreateMenu() {
-        // TODO Auto-generated method stub
         System.out.println("1. Registration");
         System.out.println("2. View Report Card");
         System.out.println("3. View Registered Courses");

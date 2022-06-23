@@ -1,2 +1,2 @@
-package com.flipkart.dao;public class ProfessorDaoInterface {
+package com.flipkart.dao;public interface ProfessorDaoInterface {
 }

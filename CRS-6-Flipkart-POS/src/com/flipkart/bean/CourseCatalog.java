@@ -5,14 +5,16 @@ import java.util.List;
 public class CourseCatalog {
     List<Course> courses;
 
-    /**Default Constructor
+    /**
+     * Default Constructor
      */
     public CourseCatalog() {
         courses = new ArrayList<>();
     }
 
 
-    /** Method to get <List>Courses
+    /**
+     * Method to get <List>Courses
      * @return List<Course>
      */
     public List<Course> getCourses() {
@@ -27,3 +29,4 @@ public class CourseCatalog {
         this.courses = courses;
     }
 }
+

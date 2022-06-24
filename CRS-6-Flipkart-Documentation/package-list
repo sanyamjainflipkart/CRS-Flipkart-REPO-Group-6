@@ -1,0 +1,6 @@
+
+com.flipkart.application
+com.flipkart.bean
+com.flipkart.exception
+com.flipkart.service
+org.apache.log4j

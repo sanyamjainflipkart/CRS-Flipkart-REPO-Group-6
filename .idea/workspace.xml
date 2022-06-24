@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e984dc00-9142-4285-bb3c-7fb3a490a6e4" name="Changes" comment="added unversioned">
-      <change afterPath="$PROJECT_DIR$/CRS-6-Flipkart-POS/src/com/flipkart/application/StudentApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CRS-6-Flipkart-POS/src/com/flipkart/service/NotificationImplementation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CRS-6-Flipkart-POS/src/com/flipkart/service/NotificationInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRS-6-Flipkart-POS/src/com/flipkart/service/StudentImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/CRS-6-Flipkart-POS/src/com/flipkart/service/StudentImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CRS-6-Flipkart-POS/src/com/flipkart/service/StudentInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/CRS-6-Flipkart-POS/src/com/flipkart/service/StudentInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRS-6-Flipkart-POS/src/com/flipkart/bean/CourseCatalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/CRS-6-Flipkart-POS/src/com/flipkart/bean/CourseCatalog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +35,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "/Users/sahil.jain5/Desktop/CRS-Flipkart-REPO-Group-6"
+    "last_opened_file_path": "/Users/rapaka.vineeth/Documents/Training/Group_Project/CRS-Flipkart-REPO-Group-6"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

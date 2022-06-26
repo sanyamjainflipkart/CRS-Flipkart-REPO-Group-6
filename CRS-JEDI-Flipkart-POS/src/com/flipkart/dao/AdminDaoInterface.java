@@ -1,81 +1,134 @@
 package com.flipkart.dao;
-
+import com.flipkart.bean.Admin;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
-import com.flipkart.exception.CourseFoundException;
-import com.flipkart.exception.CourseNotAssignedToProfessorException;
-import com.flipkart.exception.CourseNotFoundException;
-import com.flipkart.exception.ProfessorAlreadyExistsException;
+import com.flipkart.exception.*;
 
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 
-/**
- * Interface for Admin Dao Operations
- */
 public interface AdminDaoInterface {
-
     /**
-     * Delete Course using SQL commands
-     * @param courseCode
-     * @throws SQLException
+     * Method to view pending student approval
+     * @return  list of students
      */
-    public void deleteCourse(String courseCode) throws SQLException, CourseNotFoundException;
+    public ArrayList<String> viewPendingStudentApproval();
 
     /**
-     * Add Course using SQL commands
+     * Method to enable fee payment
+     * @param semesterId
+     * @return  void
+     */
+    public void enableFeePayment(String semesterId);
+
+    /**
+     * Method to disable fee payment
+     * @param semesterId
+     * @return  void
+     */
+    public void disableFeePayment(String semesterId);
+
+    /**
+     * Method to add admin
+     * @param admin
+     * @return  admin
+     */
+    public Admin addAdmin(Admin admin) throws UsernameTakenException;
+    /**
+     * Method to remove course
+     * @param courseId
+     * @return  void
+     */
+    public void removeCourse(String courseId) throws CourseNotFoundException;
+    /**
+     * Method to add course
      * @param course
-     * @throws CourseFoundException
-     * @throws SQLException
+     * @return  void
      */
-    public void addCourse(Course course) throws SQLException, CourseFoundException;
+    public void addCourse(Course course)throws CourseAlreadyPresentException;
+    /**
+     * Method to remove admin
+     * @param adminID
+     * @return  void
+     */
+    public void removeAdmin(String adminID) throws UserNotFoundException;
 
     /**
-     *Fetch Students yet to approved using SQL commands
-     * @return
-     * @throws SQLException
+     * Method to updateCourse
+     * @param course_name
+     * @param courseID
+     * @param numOfSeats
+     * @param courseInstructor
+     * @return  void
      */
-    public List<Student> viewPendingAdmissions() throws SQLException;
-//
+    public void updateCourse(String course_name, String courseID, int numOfSeats, String courseInstructor);
+    /**
+     * Method to update admin
+     * @param adminId
+     * @param name
+     * @param password
+     * @param contact
+     * @param joiningDate
+     * @param address
+     * @return  void
+     */
+    public void updateAdmin(String adminId, String name, String password, String contact, String joiningDate, String address);
+    /**
+     * Method to add professor
+     * @param prof
+     * @return  Professor
+     */
+    public Professor addProfessor(Professor prof) throws UsernameTakenException;
+    /**
+     * Method to remove Professor
+     * @param professorID
+     * @return  void
+     */
+    public void removeProfessor(String professorID) throws UserNotFoundException;
 
     /**
-     *Approve Student using SQL commands
+     * Method to update Professor
+     * @param username
+     * @param name
+     * @param password
+     * @param contact
+     * @param joiningDate
+     * @param address
+     * @param department
+     * @param designation
+     * @return  void
+     */
+    public void updateProfessor(String username, String name, String password, String contact, String joiningDate, String address, String department, String designation);
+
+    /**
+     * Method to generate grade card
+     * @return  void
+     */
+    public void generateGradeCard();
+    /**
+     * Method to view availabe course
+     * @return  list of course
+     */
+    public ArrayList<Course> viewAvailableCourses() throws CourseSeatsUnavailableException, CourseNotFoundException, InvalidSemesterException;
+    /**
+     * Method to approve student registration
      * @param studentId
-     * @throws SQLException
+     * @return  void
      */
-    public void approveStudent(String studentId) throws SQLException;
-//
+    public void approveStudentRegistration(String studentId) throws FeesPendingException, UserNotFoundException, StudentNotApprovedException;
+    /**
+     * Method to view course student list
+     * @param courseID
+     * @return course list
+     */
+    public ArrayList<String>  viewCourseStudentList(String courseID) throws InvalidCourseException;
 
     /**
-     * Add professor using SQL Commands
-     * @param professor
-     * @throws SQLException
+     * Method to view grades in respective courses
+     * @param courseID
+     * @return  list of courses
      */
-    public void addProfessor(Professor professor) throws SQLException, ProfessorAlreadyExistsException;
-//
-
-    /**
-     * Assign courses to Professor using SQL commands
-     * @param courseCode
-     * @param professorId
-     * @throws SQLException
-     */
-    public void assignCourse(String courseCode, String professorId) throws SQLException, CourseNotAssignedToProfessorException;
-//
-
-    /**
-     * View courses in the catalog
-     * @return
-     * @throws SQLException
-     */
-    public List<Course> viewCoursesInCatalog() throws SQLException;
-//
-
-    /**
-     * View professor in the institute
-     * @return
-     * @throws SQLException
-     */
-    public List<Professor> viewProfessors() throws SQLException;
+    public ArrayList<ArrayList<String>> viewCourseGrades(String courseID) throws InvalidCourseException;
 }
+

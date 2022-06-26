@@ -1,15 +1,27 @@
 package com.flipkart.exception;
 
-public class UserNotFoundException extends Exception{
+/**
+ * @author Aeron
+ * Exception arises when login attempted with wrong username.
+ */
+public class UserNotFoundException extends Exception {
+
     private String userId;
 
-    public UserNotFoundException(String userId) {
+    /**
+     * @param userId
+     */
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-
+    /**
+     * Message thrown by user
+     */
     @Override
     public String getMessage() {
-        return "User with userId: " + userId + " not found.";
+        return "No such user exists! Verify userID and try again ";
     }
+
 }
+

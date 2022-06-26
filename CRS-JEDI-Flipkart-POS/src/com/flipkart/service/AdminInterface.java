@@ -1,79 +1,170 @@
-
-
 package com.flipkart.service;
 
-
-import java.sql.SQLException;
-import java.util.List;
-
+import java.util.ArrayList;
+import java.util.Date;
+import com.flipkart.bean.Admin;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
-import com.flipkart.bean.Student;
-import com.flipkart.bean.Course;
-import com.flipkart.exception.CourseFoundException;
-import com.flipkart.exception.CourseNotAssignedToProfessorException;
-import com.flipkart.exception.CourseNotFoundException;
-import com.flipkart.exception.ProfessorAlreadyExistsException;
 
 public interface AdminInterface {
 
+    /**
+     * Method to view Pending Student Approval
 
-    /*
-     * Method to Delete Course from Course Catalog
-     * @param courseCode
-     * @throws CourseNotFoundException
-     * @throws CourseNotDeletedException
+     * @return  list of pending student
      */
-    public void deleteCourse(String courseCode) throws SQLException, CourseNotFoundException;
+    public ArrayList<String> viewPendingStudentApproval();
 
-    /*
-     * Method to add Course to Course Catalog
-     * @param course : Course object storing details of a course
+    /**
+     * Method to approve student registration
+     * @param studentID
+
+     * @return  boolean
      */
+    public void approveStudentRegistration(String studentID);
 
-
-    public void addCourse(Course course) throws SQLException, CourseFoundException;
-
-    /*
-     * Method to view Students yet to be approved by Admin
-     * @return List of Students with pending admissions
+    /**
+     * Method to add course
+     * @param course_name
+     * @param courseID
+     * @param courseInstructor
+     * @param numOfSeats
+     * @return  boolean
      */
-    public List<Student> viewPendingAdmissions() throws SQLException;
+    public Course addCourse(String course_name, String courseID, String courseInstructor, int numOfSeats);
 
-    /*
-     * Method to approve a Student
-     * @param studentId
-     * @throws StudentNotFoundException
-     * @throws StudentNotFoundForApprovalException
+    /**
+     * Method to remove course
+     * @param courseId
+     * @return  boolean
      */
-    public void approveStudent(String studentId) throws SQLException;
+    public void removeCourse(String courseId);
 
-    /*
-     * Method to add Professor to DB
-     * @param professor : Professor Object storing details of a professor
-     * @throws ProfessorNotAddedException
-     * @throws UserIdAlreadyInUseException
+    /**
+     * Method to update course
+     * @param course_name
+     * @param courseID
+     * @param numOfSeats
+     * @param courseInstructor
+     * @return  boolean
      */
-    public void addProfessor(Professor professor) throws SQLException, ProfessorAlreadyExistsException;
+    public void updateCourse(String course_name, String courseID, int numOfSeats, String courseInstructor);
 
-    /*
-     * Method to assign Course to a Professor
-     * @param courseCode
-     * @param professorId
-     * @throws CourseNotFoundException
-     * @throws UserNotFoundException
+    /**
+     * Method to generate grade card
+     * @return  grade card
      */
-    public void assignCourse(String courseCode, String professorId) throws SQLException, CourseNotAssignedToProfessorException;
+    public void generateGradeCard();
 
-    /*
-     * Method to get list of courses in catalog
-     * @return List of courses in catalog
+    /**
+     * Method to view course details
+     * @return  course details
      */
-    public List<Course> viewCoursesInCatalog() throws SQLException;
+    public void viewCourseDetails();
 
-    /*
-     * View professor in the institute
-     * @return List of the professors in the institute
+    /**
+     * Method to add professor
+     * @return  Professor
      */
-    public List<Professor> viewProfessors() throws SQLException;
+    public Professor addProfessor();
+
+    /**
+     * Method to view student details
+     * @return  void
+     */
+    public void viewStudentDetails();
+
+    /**
+     * Method to view professor details
+     * @return  void
+     */
+    public void viewProfessorDetails();
+
+    /**
+     * Method to view course grades
+     * @return  list of grades
+     */
+    public ArrayList<ArrayList<String>> viewCourseGrades(String courseID);
+
+    /**
+     * Method to enable disable fee payment window
+     * @return  void
+     */
+    public void enabledisableFeePaymentWindow();
+
+    /**
+     * Method to add admin
+     * @param username
+     * @param name
+     * @param password
+     * @param contact
+     * @param joiningdate
+     * @param address
+     * @return  admin
+     */
+    public Admin addAdmin(String username, String name, String password, String contact, String joiningdate, String address);
+    /**
+     * Method to addProfessor
+     * @param username
+     * @param name
+     * @param password
+     * @param department
+     * @param designation
+     * @param joiningDate
+     * @param address
+     * @param contact
+     * @return  professor
+     */
+    public Professor addProfessor(String username, String name, String password, String department, String designation, String joiningDate,String address,String contact);
+
+    /**
+     * Method to remove professor
+     * @param professorID
+     * @return  void
+     */
+    public void removeProfessor(String professorID);
+
+    /**
+     * Method to update professor
+     * @param username
+     * @param name
+     * @param password
+     * @param department
+     * @param designation
+     * @param address
+     * @param contact
+     * @param joiningDate
+     * @return  boolean
+     */
+    public void updateProfessor(String username, String name, String password, String department, String designation, String address, String contact, String joiningDate);
+
+    /**
+     * Method to remove admin
+     * @param adminId
+     * @return  boolean
+     */
+    public void removeAdmin(String adminId);
+
+    /**
+     * Method to update admin
+     * @param name
+     * @param password
+     * @param contact
+     * @param joiningDate
+     * @param address
+     * @return  boolean
+     */
+    public void updateAdmin(String name, String password, String contact, String joiningDate,String address);
+    /**
+     * Method to view Available Courses
+
+     * @return  list of courses
+     */
+    public ArrayList<Course> viewAvailableCourses();
+    /**
+     * Method to login user
+     * @param courseID
+     * @return  list of student list
+     */
+    public ArrayList<ArrayList<String>>  viewCourseStudentList(String courseID);
 }

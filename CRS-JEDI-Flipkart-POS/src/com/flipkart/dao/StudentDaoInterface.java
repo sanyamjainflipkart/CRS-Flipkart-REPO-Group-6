@@ -1,76 +1,18 @@
 package com.flipkart.dao;
 
-import com.flipkart.constant.Gender;
-import com.flipkart.constant.Role;
+import com.flipkart.bean.Course;
+import com.flipkart.bean.Grade;
+import com.flipkart.bean.Student;
+import com.flipkart.exception.*;
 
-import java.sql.SQLException;
+import java.util.List;
 
-/**
- * Interface for Student Dao Operations
- */
 public interface StudentDaoInterface {
-    /**
-     * Method to view grades by id
-     * @param studentID
-     * @throws SQLException
-     */
-    public void viewGrades(String studentID) throws SQLException;
+    public Student addStudent(Student student) throws UsernameTakenException;
 
-    /**
-     * method to register a student
-     * @param name
-     * @param studentID
-     * @param password
-     * @param role
-     * @param gender
-     * @param branch
-     * @param batch
-     * @param address
-     * @param country
-     * @return
-     */
-    public String register(String name, String studentID, String password, Role role, Gender gender, String branch, int batch, String address, String country) ;
+    public List<Grade> viewReportCard(String StudentID) throws ReportCardNotGeneratedException, GradeNotAddedException , StudentNotApprovedException, FeesPendingException;
+    public Boolean checkPaymentWindow(String StudentID);
 
-    /**
-     * method to add course by Id
-     * @param studentID
-     * @throws SQLException
-     */
-    public void addCourse(String studentID, String courseId) throws SQLException;
+    public List<Course> viewRegisteredCourses(String studentID) throws StudentNotRegisteredException;
 
-    /**
-     * method to drop course by Id
-     * @param studentID
-     * @throws SQLException
-     */
-    public void dropCourse(String studentID, String courseId) throws SQLException;
-
-    /**
-     * Method to view the registered courses for student by Id
-     * @param studentID
-     * @throws SQLException
-     */
-    public void viewRegisteredCourses(String studentID) throws SQLException;
-
-    /**
-     * Method to pay fees for registered courses by the student by Id
-     * @param studentID
-     * @throws SQLException
-     */
-    public void payFees(String studentID) throws SQLException;
-
-    /**
-     * Method to show notification to student with Id
-     * @param studentID
-     * @throws SQLException
-     */
-    public void showNotifications(String studentID) throws SQLException;
-
-    /**
-     * Method to check if the sudent with Id is approved
-     * @param studentId
-     * @return
-     * @throws SQLException
-     */
-    public boolean isApproved(String studentId) throws SQLException;
 }

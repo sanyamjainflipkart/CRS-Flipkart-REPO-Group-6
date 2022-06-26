@@ -1,21 +1,10 @@
 package com.flipkart.exception;
 
-public class StudentNotRegisteredException extends Exception{
-    private String studentName;
-
-    public StudentNotRegisteredException(String studentName)
-    {
-        this.studentName=studentName;
-    }
-
-
-    public String getStudentName()
-    {
-        return studentName;
-    }
+//Exception arises when appropriate student details can't be found or are not present
+public class StudentNotRegisteredException extends Exception {
 
     @Override
     public String getMessage() {
-        return  "Student with name:" + studentName+" is not registered";
+        return "No such registered student was found";
     }
 }

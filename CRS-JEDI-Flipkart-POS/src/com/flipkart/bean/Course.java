@@ -1,81 +1,38 @@
 package com.flipkart.bean;
-
+/**
+Course Class
+ */
 public class Course {
-
     private String courseCode;
-    private String name;
-
+    private String courseName;
     private String instructorId;
-    private int vacantSeats = 10;
-
-    private int courseFee = 5000;
-
+    private int numberOfSeats;
+    private Boolean isprimary;
     /**
-     * returns courseFee
-     *
-     * @return courseFee
-     */
-    public int getCourseFee() {
-        return courseFee;
-    }
-
-    /**
-     * sets courseFee
-     *
-     * @param courseFee
-     */
-    public void setCourseFee(int courseFee) {
-        this.courseFee = courseFee;
-    }
-
-    /**
-     * constructor for Course
-     *
-     * @param courseCode
-     * @param name
-     */
-    public Course(String courseCode, String name) {
+    Parametrized Constructor for Course Class
+     **/
+    public Course(String courseCode, String courseName, String instructorId, int numberOfSeats) {
         this.courseCode = courseCode;
-        this.name = name;
+        this.courseName = courseName;
+        this.instructorId = instructorId;
+        this.numberOfSeats = numberOfSeats;
+        this.isprimary=false;
     }
-
     /**
-     * parameterised constructor for Course
-     *
-     * @param courseCode
-     * @param professorId
-     * @param courseFee
-     * @param name
-     * @param vacantSeat
+    Default constructor
      */
-    public Course(String courseCode, String professorId, int courseFee, String name, int vacantSeat) {
-        this.courseCode = courseCode;
-        this.name = name;
-        this.instructorId = professorId;
-        this.courseFee = courseFee;
-        this.vacantSeats = vacantSeat;
-
-
-    }
+    public Course() {}
 
     /**
-     * default constructor for Course with no params
-     */
-    public Course() {
-    }
-
-    /**
-     * returns courseCode for a course
-     *
-     * @return courseCode
+     * Method to get Course ID
+     * @return
      */
     public String getCourseCode() {
         return courseCode;
     }
 
     /**
-     * sets courseCode for a course
-     *
+     * Method to set Course ID
      * @param courseCode
      */
     public void setCourseCode(String courseCode) {
@@ -83,58 +40,59 @@ public class Course {
     }
 
     /**
-     * returns name of Course
-     *
-     * @return name
+     * Method to get course name
+     * @return
      */
-    public String getName() {
-        return name;
+    public String getCourseName() {
+        return courseName;
     }
 
     /**
-     * sets name of course
-     *
-     * @param name
+     * Method to set course name
+     * @param courseName
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     /**
-     * returns instructorId for a course
-     *
-     * @return instructorId
+     * Method to get Instructor ID
+     * @return
      */
     public String getInstructorId() {
         return instructorId;
     }
 
     /**
-     * sets instructorId for a course
-     *
+     * Methos to set Instructor ID
      * @param instructorId
      */
+
     public void setInstructorId(String instructorId) {
         this.instructorId = instructorId;
     }
 
     /**
-     * returns number of vacantSeats for a course(initially 10)
-     *
-     * @return vacantSeats
+     * Method to get Number of seats
+     * @return
      */
-    public int getVacantSeats() {
-        return vacantSeats;
+    public int getNumberOfSeats() { return numberOfSeats; }
+
+    /**
+     * Method to set number of seats
+     * @param numberOfSeats
+     */
+    public void setNumberOfSeats(int numberOfSeats) { this.numberOfSeats = numberOfSeats; }
+
+    public Boolean getIsprimary() {
+        return isprimary;
     }
 
     /**
-     * sets number of vacantSeats for a course
-     *
-     * @param seats
+     * Method to set Primary course
+     * @param isprimary
      */
-    public void setVacantSeats(int seats) {
-        this.vacantSeats = seats;
+    public void setIsprimary(Boolean isprimary) {
+        this.isprimary = isprimary;
     }
-
-
 }

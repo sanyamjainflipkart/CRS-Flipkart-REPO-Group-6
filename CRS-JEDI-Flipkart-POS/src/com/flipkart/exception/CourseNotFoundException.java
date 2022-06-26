@@ -1,22 +1,40 @@
 package com.flipkart.exception;
 
-public class CourseNotFoundException extends Exception{
-    private String courseCode;
+/**
+ * @author Dell
+ *
+ */
 
-    public CourseNotFoundException(String courseCode)
-    {
-        this.courseCode = courseCode;
+//Exception arises when course doesnt exist in the course catalog
+
+public class CourseNotFoundException extends Exception {
+    private String courseID;
+
+    public CourseNotFoundException() {
+        // TODO Auto-generated constructor stub
+        courseID = "";
     }
 
-    public String getCourseCode()
-    {
-        return courseCode;
+    /**
+     * @param courseID
+     */
+    public CourseNotFoundException(String courseID) {
+        super();
+        this.courseID = courseID;
     }
 
+
+
+    /**
+     * @return the courseID
+     */
+    public String getCourseID() {
+        return courseID;
+    }
 
     @Override
-    public String getMessage()
-    {
-        return "Course with courseCode: " + courseCode + " not found.";
+    public String getMessage() {
+        return "CourseID: " + courseID + " is not present in course catalogue!";
     }
+
 }

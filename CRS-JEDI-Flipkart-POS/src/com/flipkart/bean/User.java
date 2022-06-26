@@ -1,60 +1,57 @@
 package com.flipkart.bean;
-
-import com.flipkart.constant.Gender;
-import com.flipkart.constant.Role;
-
-
+import java.sql.Date;
+/**
+ * USER class
+ */
 public class User {
+
+    private String joiningDate;
     private String userId;
     private String name;
-    private Role role;
-    private String password;
-    private Gender gender;
-    private String address;
-    private String country;
+    private String role;
 
-    public User(String userId, String name, Role role, String password, Gender gender, String address,
-                String country) {
-//        super();
+    private String password;
+    private String address;
+    private String contactnum;
+
+    /**
+     * Parameterized Constructor
+     * @param joiningDate
+     * @param userId
+     * @param name
+     * @param role
+     * @param password
+     * @param address
+     * @param contactnum
+     */
+    public User(String joiningDate, String userId, String name, String role, String password, String address, String contactnum) {
+        this.joiningDate = joiningDate;
         this.userId = userId;
         this.name = name;
         this.role = role;
         this.password = password;
-        this.gender = gender;
         this.address = address;
-        this.country = country;
+        this.contactnum = contactnum;
     }
 
     /**
-     * gives gender of a user
-     *
-     * @return gender
+     * Default constructor
      */
-    public Gender getGender() {
-        return gender;
+    public User()
+    {
+
     }
 
     /**
-     * sets gender of a user
-     *
-     * @param gender
-     */
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    /**
-     * gives address of a user
-     *
-     * @return address
+     * Method to get address
+     * @return
      */
     public String getAddress() {
         return address;
     }
 
     /**
-     * sets address of a user
-     *
+     * Method to set user address
      * @param address
      */
     public void setAddress(String address) {
@@ -62,43 +59,32 @@ public class User {
     }
 
     /**
-     * gives country for a user
-     *
-     * @return country
+     * Method to get contact number
+     * @return
      */
-    public String getCountry() {
-        return country;
+    public String getContactnum() {
+        return contactnum;
     }
 
     /**
-     * sets country for a user
-     *
-     * @param country
+     * Method to set contact number
+     * @param contactnum
      */
-    public void setCountry(String country) {
-        this.country = country;
+
+    public void setContactnum(String contactnum) {
+        this.contactnum = contactnum;
     }
 
     /**
-     * default constructor for User
-     */
-
-    public User() {
-
-    }
-
-    /**
-     * gives userId for a user
-     *
-     * @return userId
+     * Method to get user ID
+     * @return
      */
     public String getUserId() {
         return userId;
     }
 
     /**
-     * sets userId for a user
-     *
+     * Method to set user Id
      * @param userId
      */
     public void setUserId(String userId) {
@@ -106,17 +92,15 @@ public class User {
     }
 
     /**
-     * gives name for a user
-     *
-     * @return name
+     * Method to get name
+     * @return
      */
     public String getName() {
         return name;
     }
 
     /**
-     * sets name for a user
-     *
+     * Method to set name
      * @param name
      */
     public void setName(String name) {
@@ -124,38 +108,55 @@ public class User {
     }
 
     /**
-     * gives role for a user(Admin/Professor/Student)
-     *
-     * @return role
+     * Method to get role
+     * @return
      */
-    public Role getRole() {
+
+    public String getRole() {
         return role;
     }
 
     /**
-     * sets role for a user(Admin/Professor/Student)
-     *
+     * Method to set role
      * @param role
      */
-    public void setRole(Role role) {
+
+    public void setRole(String role) {
         this.role = role;
     }
 
     /**
-     * gives password for a user
-     *
-     * @return password
+     * Method to get password
+     * @return
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * sets password for a user
-     *
+     *Method to set password
      * @param password
      */
+
     public void setPassword(String password) {
         this.password = password;
     }
+
+    /**
+     * Method to getjoining date
+     * @return
+     */
+    public String getJoiningDate() {
+        return joiningDate;
+    }
+
+    /**
+     * Method to set joining date
+     * @param joiningDate
+     */
+
+    public void setJoiningDate(String joiningDate) {
+        this.joiningDate = joiningDate;
+    }
+
 }

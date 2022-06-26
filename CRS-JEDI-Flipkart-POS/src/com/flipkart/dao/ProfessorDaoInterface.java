@@ -1,55 +1,23 @@
 package com.flipkart.dao;
-
-
-import com.flipkart.bean.Course;
-import com.flipkart.bean.EnrolledStudent;
-import com.flipkart.exception.GradeNotAddedException;
-
-
 import java.sql.SQLException;
-import java.util.List;
+import java.util.*;
+import com.flipkart.bean.Course;
+import com.flipkart.bean.RegisteredStudents;
+import com.flipkart.bean.Student;
+import com.flipkart.exception.CourseExistsInCartException;
+import com.flipkart.exception.GradeNotAddedException;
+import com.flipkart.exception.NoStudentInCourseException;
+import com.flipkart.exception.StudentNotRegisteredException;
 
-/**
- *Interface for Professor Dao Operations
- */
 public interface ProfessorDaoInterface {
 
-    /**
-     * Method to Grade a student using SQL Commands
-     * @param studentId
-     * @param courseId
-     * @param grade
-     * @return
-     * @throws SQLException
-     */
-    public boolean addGrade(String studentId, String courseId, String grade) throws SQLException;
+    public List<RegisteredStudents> getRegisteredStudents(String professorID, String courseID) throws NoStudentInCourseException;
 
-    /**
-     * Method to view list of enrolled Students using SQL Commands
-     * @param profId
-     * @return
-     */
-    public List<EnrolledStudent> viewEnrolledStudents(String profId);
+    public Boolean addGrade(String studentId,String courseID,String grade) throws GradeNotAddedException,StudentNotRegisteredException, SQLException;
 
-    /**
-     * Method to get Courses by Professor Id using SQL Commands
-     * @param profId
-     * @return
-     */
-    public List<Course> getCourses(String profId);
+    public List<Course> viewAvailableCourses();
 
-
-    /**
-     * Method to Get professor name by id
-     * @param profId
-     * @return
-     */
-    public String getProfessorById(String profId);
-
-    /**
-     * Method to list all courses taught by the professor with id
-     * @param profId
-     * @return
-     */
-    List<Course> getCoursesByProf(String profId);
+    public boolean registerCourse(String professorID, String courseID) throws CourseExistsInCartException;
 }
+
+

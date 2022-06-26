@@ -1,209 +1,230 @@
 package com.flipkart.application;
-
-import com.flipkart.bean.Professor;
-import com.flipkart.bean.Student;
-import com.flipkart.bean.User;
-import com.flipkart.constant.Gender;
-import com.flipkart.constant.NotificationType;
-import com.flipkart.constant.Role;
-import com.flipkart.dao.StudentDaoInterface;
-import com.flipkart.dao.StudentDaoOperation;
-import com.flipkart.dao.UserDaoInterface;
-import com.flipkart.dao.UserDaoOperation;
-import com.flipkart.exception.CourseFoundException;
-import com.flipkart.exception.GradeNotAddedException;
-import com.flipkart.exception.SeatNotAvailableException;
-import com.flipkart.exception.StudentNotFoundForApprovalException;
-import com.flipkart.service.*;
-import java.util.Date;
-
-import java.sql.SQLException;
-import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Scanner;
+import java.sql.Date;
+
+import com.flipkart.bean.Student;
+import com.flipkart.service.StudentInterface;
+import com.flipkart.service.StudentImplementation;
+import com.flipkart.service.UserInterface;
+import com.flipkart.service.UserImplementation;
+
 
 /**
- * Class containing methods for main menu
+ @author JEDI-06 Flipkart mentor- Amit K. Balyan
+ Sanyam and team
+
+ **** This is the main app for the Course Registration System********
  */
+
+
+
+
+
 public class CRSApplication {
-    public static boolean loggedIn = false;
-    public static UserDaoInterface userInterface = new UserDaoOperation();
+    private Scanner sc = new Scanner(System.in);
+    StudentImplementation so=new StudentImplementation();
 
-    /*
-    Main Menu Displays Here.
-     */
-    static Scanner sc = new Scanner(System.in);
-    public static void main(String[] args){
-//        System.out.println("hello hello...");
-        menu();
 
-        int userInput = sc.nextInt();
+    public static void main(String[] args) {
+        CRSApplication newUser = new CRSApplication();
+        newUser.createMenu();
+    }
 
+
+
+    /**
+     * Method to Create Main Menu for our App
+     **/
+
+
+    public void createMenu() {
         try {
-            while (userInput != 4) {
-                switch (userInput) {
+            while(true) {
+                System.out.println("\n\n==~~=~~= Course Registration System ~=~~=~~=~~==");
+                System.out.println("                                             ");
+                System.out.println("   Welcome !    ");
+                System.out.println("\nChoose an option: ");
+                System.out.println("---------------------------------------");
+                System.out.println("1 : Login");
+                System.out.println("2 : Student Self Registration");
+                System.out.println("3 : Update Password");
+                System.out.println("4 : Exit menu");
+                System.out.println("=======================================");
+
+                int menuOption = sc.nextInt();
+                sc.nextLine();
+
+                switch(menuOption) {
                     case 1:
-                        // login
-                        //Date currentDate = new Date();
-                        //System.out.println("Current Date and Time: " + currentDate);
+                        // Login functionality for (student / professor / admin).
                         loginUser();
                         break;
+
                     case 2:
-                        // student registration
-                        registerStudent();
+                        // Self Registration for a new student.
+                        selfRegisterStudent();
                         break;
+
                     case 3:
-                        // update Password
+                        // Functionality to update login password.
                         updatePassword();
                         break;
+
+                    case 4:
+                        // Close  the portal.
+                        sc.close();
+                        return;
+
                     default:
-                        System.out.println("Invalid Input");
+                        System.out.println("Invalid input");
                 }
-                menu();
-                userInput = sc.nextInt();
             }
-        }catch(Exception e) {
-            System.out.println("ERROR OCCURED" + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
     }
 
 
-    /**
-     * Method to display main menu
-     */
-    public static void menu() {
-        System.out.println("----------Welcome to Course Management System---------");
-        System.out.println("1. Login");
-        System.out.println("2. Student Registration");
-        System.out.println("3. UpdatePassword");
-        System.out.println("4. Exit");
-        System.out.println("Enter user input");
-    }
-    /*
-    Method to login the user.
-    -> Admin
-    -> Student
-    -> Professor
-     */
 
     /**
-     * Method to login the user.
-     *     -> Admin
-     *     -> Student
-     *     -> Professor
-     * @throws SQLException
-     * @throws CourseFoundException
+     * Method for Login functionality
      */
-    public static void loginUser() throws SQLException, CourseFoundException, GradeNotAddedException, SeatNotAvailableException, StudentNotFoundForApprovalException {
-        Scanner sc=new Scanner(System.in);
-
-        String userId,password;
-
-            System.out.println("-----------------Login------------------");
-            //Date currentDate = new Date();
-            //System.out.println("Current Date and Time - Before Java 8 : " + currentDate);
-            System.out.println("Email:");
-            userId=sc.next();
-            System.out.println("Password:");
-            password=sc.next();
-            loggedIn = userInterface.verifyCredentials(userId, password);
 
 
-            if(loggedIn)
-            {
-                Date currentDate = new Date();
-                System.out.println("Logged in at : " + currentDate);
-                Role userRole=userInterface.getRole(userId);
+    public void loginUser()
+    {
+        String username, password, role;
 
-//                Role userRole=Role.stringToName(role);
-                switch(userRole)
-                {
-                    case ADMIN:
-                        System.out.println(" Login Successful");
-                        AdminCRSMenu adminMenu=new AdminCRSMenu();
-                        adminMenu.displayMenu();
-                        break;
-                    case PROFESSOR:
-                        System.out.println(" Login Successful");
-                        ProfessorCRSMenu professorMenu=new ProfessorCRSMenu();
-                        professorMenu.professorLoggedin(userId);
-
-                        break;
-                    case STUDENT:
-                        StudentDaoInterface studentInterface = new StudentDaoOperation();
-                        boolean isApproved=studentInterface.isApproved(userId);
-                        if(isApproved)
-                        {
-                            System.out.println(" Login Successful");
-                            StudentCRSMenu studentMenu=new StudentCRSMenu();
-                            studentMenu.studentLoggedin(userId);
-                        }
-                        else
-                        {
-                            System.out.println("Failed to login, you have not been approved by the administration!");
-                            loggedIn=false;
-                        }
-                        break;
-                }
-
-
-            }
-            else
-            {
-                System.out.println("Invalid Credentials!");
-            }
-
-        }
-
-
-    /**
-     * Method to register the student on
-     *     the portal.
-     */
-    public static void registerStudent() {
-
-        Scanner sc = new Scanner(System.in);
-        StudentDaoInterface studentImpl = new StudentDaoOperation();
-        NotificationImpl notificationImpl = new NotificationImpl();
-        String userId, name, password, address, country, branchName, gender;
-        int genderV, batch;
         try {
-            //input all the student details
-            System.out.println("---------------Student Registration-------------");
-            System.out.println("Name:");
-            name = sc.next();
-            System.out.println("Email:");
-            userId = sc.next();
-            System.out.println("Password:");
-            password = sc.next();
-            System.out.println("Gender: 1. Male | 2. Female | 3. Other");
-            gender = sc.next();
-            System.out.println("Branch:");
-            branchName = sc.next();
-            System.out.println("Batch(in numbers):");
-            batch = sc.nextInt();
-            sc.nextLine();
-            System.out.println("Address:");
-            address = sc.next();
-            System.out.println("Country");
-            country = sc.next();
-            String newStudentId = studentImpl.register(name, userId, password, Role.STUDENT, Gender.getName(Integer.parseInt(gender)), branchName, batch, address, country);
-            System.out.println(newStudentId);
-//            notificationImpl.sendNotification(NotificationType.REGISTRATION, newStudentId, null, 0);
 
+            System.out.println("=======================================");
+            System.out.print("UserID: ");
+            username = sc.nextLine();
+            System.out.print("Password: ");
+            password = sc.nextLine();
+            System.out.print("Enter Role (student/professor/admin): ");
+            role = sc.nextLine();
+
+            UserImplementation uo = new UserImplementation();
+
+            if (uo.loginUser(username, password, role)) {
+                switch (role) {
+                    case "student":
+                        System.out.println("=======================================");
+                        System.out.println("Logged In Successfully as a Student");
+                        System.out.println("Welcome " + username + " !!");
+//                        System.out.println("Login Time: "+ dtf.format(now) );
+                        CRSStudent sc = new CRSStudent();
+                        sc.createStudentMenu(username);
+                        break;
+
+                    case "professor":
+                        System.out.println("=======================================");
+                        System.out.println("Logged In Successfully as a Professor");
+                        System.out.println("Welcome " + username + " !!");
+//                        System.out.println("Login Time: "+ dtf.format(now) );
+                        CRSProfessor pc = new CRSProfessor();
+                        pc.createProfessorMenu(username);
+                        break;
+
+                    case "admin":
+                        System.out.println("=======================================");
+                        System.out.println("Logged In Successfully as a Admin");
+                        System.out.println("Welcome " + username + " !!");
+//                        System.out.println("Login Time: "+ dtf.format(now) );
+                        CRSAdmin ac = new CRSAdmin();
+                        ac.createAdminMenu(username);
+                        break;
+
+                    default:
+                        System.out.println("Invalid Role");
+                        System.out.println("=======================================");
+                }
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * Method to update password of User
+     */
+
+
+    public void updatePassword()
+    {
+        String oldPassword,newPassword,username;
+        try {
+            System.out.println("=======================================");
+            System.out.print("Enter UserID: ");
+            username = sc.nextLine();
+            System.out.print("Enter existing Password: ");
+            oldPassword = sc.nextLine();
+
+            UserImplementation uo = new UserImplementation();
+           // if(uo.loginUser(username, oldPassword, role))
+
+            System.out.println("=======================================");
+            System.out.print("Enter new Password: ");
+            newPassword = sc.nextLine();
+            uo.updatePassword(username, newPassword); //function calling
 
         } catch (Exception e) {
-            System.out.println(e+"Something went wrong!  not registered. Please try again");
+            e.printStackTrace();
         }
-
+        System.out.println("Updated Password !! \n");
     }
 
-        public static void updatePassword() {
-//            TODO
 
+
+    /**
+     * Method to help Student register themselves, pending admin approval
+     */
+
+
+    public void  selfRegisterStudent()
+    {
+        String studentId, password, name, department;
+        String joiningDate,address,contactnum;
+
+        try {
+            System.out.println("=======================================");
+            System.out.println("Enter your details");
+            System.out.println("---------------------------------------");
+            System.out.print("Student ID: ");
+            studentId = sc.nextLine();
+            System.out.print("Password: ");
+            password = sc.nextLine();
+            System.out.print("Name: ");
+            name = sc.nextLine();
+            System.out.print("Department: ");
+            department = sc.nextLine();
+            System.out.print("Jining Date, Please enter in format dd-MM-YYYY: ");
+            joiningDate = sc.nextLine();
+            System.out.print("Address: ");
+            address = sc.nextLine();
+            System.out.print("Contact Number: ");
+            contactnum = sc.nextLine();
+            System.out.println("=======================================");
+            Student stud = so.registerStudent(studentId,name, password, department, joiningDate,address,contactnum);
+            if(stud == null) {
+                System.out.println("Student Was not added");
+                System.out.println("=======================================");
+            }
+            else {
+                System.out.println("Student Added Successfully! Wait for admin approval!");
+                System.out.println("=======================================");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
-
+    }
 
 }

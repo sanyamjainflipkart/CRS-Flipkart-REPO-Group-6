@@ -1,82 +1,134 @@
 package com.flipkart.bean;
 
+import java.sql.Time;
+import java.time.LocalTime;
+
+/**
+ * Notification class
+ */
 public class Notification {
-    private int studentId;
-    private int paymentId;
+    private String studentId;
+    private String notificationId;
+    private String referenceId;
+    private String notificationMSG;
 
-    private int notificationId;
-    private String notificationMessage;
+    private Boolean notificationSent;
 
-    public Notification(int studentId, int paymentId, int notificationId, String notificationMessage) {
+    public Notification(String studentId, String notificationId, String referenceId, String notificationMSG, Boolean notificationSent) {
         this.studentId = studentId;
-        this.paymentId = paymentId;
         this.notificationId = notificationId;
-        this.notificationMessage = notificationMessage;
+        this.referenceId = referenceId;
+        this.notificationMSG = notificationMSG;
+        this.notificationSent=notificationSent;
     }
 
     /**
-     * gives studentId for a notification
-     * @return studentId
+     * Default constructor
      */
-    public int getStudentId() {
+    public Notification() {}
+
+
+    /**
+     * Methos to get student ID
+     * @return
+     */
+    public String getStudentId() {
         return studentId;
     }
-
     /**
-     * sets studentId for a notification
-     * @param studentId
+     * Methos to set student ID
+     * @return
      */
-    public void setStudentId(int studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
-
     /**
-     * gives paymentId for payment notification
-     * @return paymentId
+     * Methos to get notification ID
+     * @return
      */
-    public int getPaymentId() {
-        return paymentId;
-    }
-
-    /**
-     * sets paymentId for payment notification
-     * @param paymentId
-     */
-    public void setPaymentId(int paymentId) {
-        this.paymentId = paymentId;
-    }
-
-    /**
-     * gives notificationId for a notification
-     * @return notificationId
-     */
-    public int getNotificationId() {
+    public String getNotificationId() {
         return notificationId;
     }
-
     /**
-     * sets notificationId for a notification
-     * @param notificationId
+     * Methos to set notification ID
+     * @return
      */
-    public void setNotificationId(int notificationId) {
+    public void setNotificationId(String notificationId) {
         this.notificationId = notificationId;
     }
-
     /**
-     * gives notificationMessage for a notification
-     * @return notificationMessage
+     * Methos to get reference ID
+     * @return
      */
-    public String getNotificationMessage() {
-        return notificationMessage;
+    public String getReferenceId() {
+        return referenceId;
+    }
+    /**
+     * Methos to set reference ID
+     * @return
+     */
+    public void setReferenceId(String referenceId) {
+        this.referenceId = referenceId;
+    }
+    /**
+     * Methos to get notification
+     * @return
+     */
+    public String getNotificationMSG() {
+        return notificationMSG;
+    }
+    /**
+     * Methos to set notification
+     * @return
+     */
+    public void setNotificationMSG(String notificationMSG) {
+        this.notificationMSG = notificationMSG;
+    }
+    /**
+     * Methos to check notification sent
+     * @return
+     */
+    public Boolean getNotificationSent() {
+        return notificationSent;
+    }
+    /**
+     * Methos to check notification sent
+     * @return
+     */
+    public void setNotificationSent(Boolean notificationSent) {
+        this.notificationSent = notificationSent;
+    }
+    /**
+     * Methos to show Registration Notification
+     * @return
+     */
+    public void showRegistrationNotification(){
+        System.out.println("+-----------------------------------+");
+        System.out.println("|         Notification Alert!       |");
+        System.out.println("+-----------------------------------+");
+        System.out.println("|      Registration Completed!      |");
+        System.out.println("|    Please Complete Fee Payment!   |");
+        System.out.println("+-----------------------------------+");
     }
 
     /**
-     * sets notificationMessage for a notification
-     * @param notificationMessage
+     * Methos to show Payment Notification
+     * @return
      */
-    public void setNotificationMessage(String notificationMessage) {
-        this.notificationMessage = notificationMessage;
+    public void showPaymentNotification(String StudentId, int Amount, Time PaymentTime, Boolean PaymentStatus, String paymentmode, String newID,
+                                        String newnotificationID, String message){
+        System.out.println("+-----------------------------------+");
+        System.out.println("|         Notification Alert!       |");
+        System.out.println("+-----------------------------------+");
+        System.out.println("|          Payment Completed!       |");
+        System.out.println("|   Student ID: " + StudentId);
+        System.out.println("|   Amount    : " + Amount);
+        System.out.println("|   Transaction ID: " + newnotificationID);
+        System.out.println("|   Payment Time: " + PaymentTime);
+        System.out.println("|   Payment Status: " +PaymentStatus);
+        System.out.println("|   Payment Mode: " + paymentmode);
+        System.out.println("|   Mesage " + message);
+        System.out.println("+-----------------------------------+");
     }
-
 
 }

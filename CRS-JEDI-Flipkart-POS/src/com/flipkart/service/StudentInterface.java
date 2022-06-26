@@ -1,75 +1,30 @@
 package com.flipkart.service;
 
-import com.flipkart.constant.Gender;
-import com.flipkart.constant.Role;
-import com.flipkart.exception.CourseFoundException;
-import com.flipkart.exception.GradeNotAddedException;
-import com.flipkart.exception.SeatNotAvailableException;
-import com.flipkart.exception.StudentNotFoundForApprovalException;
-import java.sql.SQLException;
-
+import java.sql.Date;
+import java.util.List;
+import com.flipkart.bean.Student;
 
 public interface StudentInterface {
 
-
     /**
-     * Method to view grades of a student
-     * @param studentID
-     */
-    public void viewGrades(String studentID) throws SQLException, StudentNotFoundForApprovalException, GradeNotAddedException;
-
-    /**
-     * Method to register student into the system
+     * Method to view Register student
      * @param name
-     * @param studentID
      * @param password
-     * @param role
-     * @param gender
-     * @param branch
-     * @param batch
+     * @param department
+     * @param joiningDate
      * @param address
-     * @param country
-     * @return student id
+     * @param contactnum
+     * @return  void
      */
-    public String register(String name, String studentID, String password, Role role, Gender gender, String branch, int batch, String address, String country) throws SQLException;
+
+    public Student registerStudent(String studentID, String name, String password, String department, String joiningDate, String address, String contactnum);
 
     /**
-     * Method to add course to student's registered courses
-     * @param studentID
+     * Method to view Grade card by student
+     * @param StudentID
+     * @param semesterID
+     * @return  void
      */
-    public void addCourse(String studentID) throws SQLException, SeatNotAvailableException;
-
-    /**
-     * Method to remove course from student's registered courses
-     * @param studentID
-     */
-    public void dropCourse(String studentID) throws SQLException, CourseFoundException;
-
-    /**
-     * Method to view registered courses of a student
-     * @param studentID
-     */
-
-    public void viewRegisteredCourses(String studentID) throws SQLException;
-
-    /**
-     * Method to implement fee payment for a student
-     * @param studentID
-     */
-    public void payFees(String studentID);
-
-    /**
-     * Method to display notifications
-     * @param studentID
-     */
-    public void showNotifications(String studentID) throws SQLException;
-
-    /**
-     * Method to check if a student is approved
-     * @param studentId
-     * @return
-     */
-
-    public boolean isApproved(String studentId) throws SQLException;
+    public void viewGradeCard(String StudentID, int semesterID);
 
 }

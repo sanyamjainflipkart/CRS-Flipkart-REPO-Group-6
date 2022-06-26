@@ -1,7 +1,8 @@
 package com.flipkart.dao;
-
+import com.flipkart.bean.Notification;
 import java.sql.SQLException;
 
 public interface NotificationDaoInterface {
-    public int sendNotification(String studentId, String message) throws SQLException;
+   // public Boolean sendPaymentCompleteNotification(String transactionID, String studentid);
+    public String getNewTransactionID();
 }
